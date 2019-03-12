@@ -8,12 +8,15 @@ import java.util.List;
  CREATE TABLE products (
  	id integer,
  	name varchar,
- 	name varchar,
  	url_image varchar,
  	price integer,
  	description varchar,
  	CONSTRAINT pk_products PRIMARY KEY(id)
  );
+
+ CREATE SEQUENCE sequence_products;
+ ALTER TABLE products ALTER COLUMN id SET DEFAULT nextval('sequence_products');
+
  * @author Gokan EKINCI
  */
 @Entity
@@ -21,8 +24,10 @@ import java.util.List;
 public class ProductEntity {
 	/**
 	 * Reference of the product
+	 * GeneratedValue by sequence in database
 	 */
 	@Id
+	@GeneratedValue(generator = "sequence_products")
 	private Long id;
 
 	private String name;

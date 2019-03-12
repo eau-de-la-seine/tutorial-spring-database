@@ -4,6 +4,8 @@ import fr.ekinci.demojpa.configuration.DatabaseConfiguration;
 import fr.ekinci.demojpa.model.ProductEntity;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.sql.SQLException;
@@ -16,10 +18,11 @@ public class ProductDAOviaJPA implements IProductDAO {
 	@PersistenceContext(unitName = DatabaseConfiguration.JPA_PERSISTANCE_UNIT_NAME)
 	private EntityManager em;
 
+	@Transactional
 	@Override
 	public ProductEntity insert(ProductEntity product) {
-		product.setId(null);
-		return em.merge(product);
+		em.persist(product);
+		return product;
 	}
 
 	@Override

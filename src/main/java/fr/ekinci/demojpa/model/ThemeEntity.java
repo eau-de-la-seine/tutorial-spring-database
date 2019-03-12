@@ -1,20 +1,22 @@
 package fr.ekinci.demojpa.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
- * SALLE_DE_BAIN
- * SALON
- * CUISINE
- * CHAMBRE
+ CREATE TABLE themes (
+ 	id integer,
+ 	name varchar,
+ 	CONSTRAINT pk_themes PRIMARY KEY(id)
+ );
+
+ CREATE SEQUENCE sequence_themes;
+ ALTER TABLE themes ALTER COLUMN id SET DEFAULT nextval('sequence_themes');
  */
 @Entity
 @Table(name = "themes")
 public class ThemeEntity {
 	@Id
+	@GeneratedValue(generator = "sequence_themes")
 	private Long id;
 
 	private String name;

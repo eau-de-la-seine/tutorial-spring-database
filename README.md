@@ -20,6 +20,17 @@ Créez une classe de configuration SQL :
 * Activer les transactions avec `@EnableTransactionManagement`
 * Spring Data : Indiquer l'existence des classes Entity et Repository avec `@EnableJpaRepositories`
 
+### Creation of SQL Sequences
+
+```
+CREATE SEQUENCE sequence_products;
+CREATE SEQUENCE sequence_themes;
+CREATE SEQUENCE sequence_tags;
+
+ALTER TABLE products ALTER COLUMN id SET DEFAULT nextval('sequence_products');
+ALTER TABLE themes ALTER COLUMN id SET DEFAULT nextval('sequence_themes');
+ALTER TABLE tags ALTER COLUMN id SET DEFAULT nextval('sequence_tags');
+```
 
 
 ## DataSource
