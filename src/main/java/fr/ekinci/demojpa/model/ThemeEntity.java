@@ -9,8 +9,8 @@ import javax.persistence.*;
  	CONSTRAINT pk_themes PRIMARY KEY(id)
  );
 
- CREATE SEQUENCE sequence_themes;
- ALTER TABLE themes ALTER COLUMN id SET DEFAULT nextval('sequence_themes');
+ CREATE SEQUENCE sequence_themes OWNED BY themes.id;
+ -- Ou bien : ALTER TABLE themes ALTER COLUMN id SET DEFAULT nextval('sequence_themes');
  */
 @Entity
 @Table(name = "themes")

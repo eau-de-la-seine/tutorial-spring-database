@@ -11,11 +11,12 @@ import java.util.List;
  	url_image varchar,
  	price integer,
  	description varchar,
+ 	fk_id_theme integer,
  	CONSTRAINT pk_products PRIMARY KEY(id)
  );
 
- CREATE SEQUENCE sequence_products;
- ALTER TABLE products ALTER COLUMN id SET DEFAULT nextval('sequence_products');
+ CREATE SEQUENCE sequence_products OWNED BY products.id;
+ -- Ou bien : ALTER TABLE products ALTER COLUMN id SET DEFAULT nextval('sequence_products');
 
  * @author Gokan EKINCI
  */

@@ -6,11 +6,12 @@ import javax.persistence.*;
  CREATE TABLE tags (
  	id integer,
  	name varchar,
+ 	fk_id_product integer,
  	CONSTRAINT pk_tags PRIMARY KEY(id)
  );
 
- CREATE SEQUENCE sequence_tags;
- ALTER TABLE tags ALTER COLUMN id SET DEFAULT nextval('sequence_tags');
+ CREATE SEQUENCE sequence_tags OWNED BY tags.id;
+ -- Ou bien : ALTER TABLE tags ALTER COLUMN id SET DEFAULT nextval('sequence_tags');
  */
 @Entity
 @Table(name = "tags")

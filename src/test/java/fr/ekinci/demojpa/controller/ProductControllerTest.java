@@ -94,7 +94,7 @@ public class ProductControllerTest {
 		ProductEntity response = mapper.readValue(responseBody, ProductEntity.class);
 
 		// THEN
-		Assert.assertEquals("Cahier", response.getName());
+		Assert.assertEquals("PC Portable", response.getName());
 		Assert.assertEquals("ça sert écrire des trucs dedans", response.getDescription());
 		Assert.assertEquals(1000L, response.getPrice().longValue());
 		Assert.assertEquals(1L, response.getTheme().getId().longValue());
